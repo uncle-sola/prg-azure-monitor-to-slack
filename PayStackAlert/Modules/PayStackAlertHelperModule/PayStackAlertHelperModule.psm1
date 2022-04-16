@@ -133,9 +133,9 @@ boolean.
 
 
     $tableName = "paystackmessages"
-    $appSharedStorageAccountName = "mondevappsharedstr"
-    $appSharedResourceGroupName = "mon-dev-app-sharedresources-rg"
-    $subscriptionName ="cb5ab4a7-dd08-4be3-9d7e-9f68ae30f224"
+    $appSharedStorageAccountName = "prgdevappsharedstr"
+    $appSharedResourceGroupName = "prg-dev-app-sharedresources-rg"
+    $subscriptionName ="f3b14109-a3de-4f54-9f58-46d891380a7e"
 
     # Install-Module -Name AzTable -Force
     # Import-Module AzTable
@@ -198,7 +198,7 @@ boolean.
 
 
 
-    $storageAccountName = "mondevappsharedstr"
+    $storageAccountName = "prgdevappsharedstr"
     $tableName = "paystackmessages"
     $apiVersion = "2017-04-17"
     $tableURL = "https://$($storageAccountName).table.core.windows.net/$($tableName)"
@@ -252,7 +252,7 @@ boolean.
         # Add-AzTableRow -table $cloudTable -partitionKey $($Alert.event) -rowKey $($Alert.Data.id) -property @{"payStackId"=$($Alert.Data.id)} 
 
             
-        $storageAccountName = "mondevappsharedstr"
+        $storageAccountName = "prgdevappsharedstr"
         $tableName = "paystackmessages"
         $apiVersion = "2017-04-17"
         $tableURL = "https://$($storageAccountName).table.core.windows.net/$($tableName)"
@@ -286,7 +286,7 @@ boolean.
     } else {
 
         Write-Information "Adding new record to duplicate table"
-        $storageAccountName = "mondevappsharedstr"
+        $storageAccountName = "prgdevappsharedstr"
         $tableName = "duplicates"
         $apiVersion = "2017-04-17"
         $tableURL = "https://$($storageAccountName).table.core.windows.net/$($tableName)"
