@@ -24,11 +24,11 @@ steps:
   displayName: 'Copy MonitorAlert files'
   inputs:
     Contents: Modules/** 
-      MonitorAlert/** 
-      host.json 
-      profile.ps1 
-      requirements.psd1 
-      proxies.json 
+      # MonitorAlert/** 
+      # host.json 
+      # profile.ps1 
+      # requirements.psd1 
+      # proxies.json 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
     SourceFolder: $(Build.SourcesDirectory)/MonitorAlert
 
@@ -44,8 +44,8 @@ steps:
   displayName: 'Copy PayStack files'
   inputs:
     Contents: Modules/** 
-              PayStackAlert/** 
-              requirements.psd1 
+              # PayStackAlert/** 
+              # requirements.psd1 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
     SourceFolder: $(Build.SourcesDirectory)/PayStackAlert
 
