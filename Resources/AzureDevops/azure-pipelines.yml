@@ -10,7 +10,6 @@ pool:
   vmImage: 'windows-latest'
 
 trigger:
-  batch: true
   branches:
     include:
     - master
@@ -24,34 +23,30 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy Function files'
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)/MonitorAlert'
-    contents: |
-      Modules/**
-      MonitorAlert/**
-      host.json
-      profile.ps1
-      requirements.psd1
-      proxies.json
-    targetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    Contents: |
+      '$(Build.SourcesDirectory)/MonitorAlert/Modules/**'
+      '$(Build.SourcesDirectory)/MonitorAlert/MonitorAlert/**'
+      '$(Build.SourcesDirectory)/MonitorAlert/host.json'
+      '$(Build.SourcesDirectory)/MonitorAlert/profile.ps1'
+      '$(Build.SourcesDirectory)/MonitorAlert/requirements.psd1'
+      '$(Build.SourcesDirectory)/MonitorAlert/proxies.json'
+    TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
 
     
 - task: CopyFiles@2
   displayName: 'Copy Function files'
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)/PostMessageToSlack'
-    contents: |
-      PostMessageToSlack/**
-    targetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    Contents: '$(Build.SourcesDirectory)/PostMessageToSlack/PostMessageToSlack/**'
+    TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
 
 - task: CopyFiles@2
   displayName: 'Copy Function files'
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)/PayStackAlert'
-    contents: |
-      Modules/**
-      PayStackAlert/**
-      requirements.psd1
-    targetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    Contents: |
+      '$(Build.SourcesDirectory)/PayStackAlert/Modules/**'
+      '$(Build.SourcesDirectory)/PayStackAlert/PayStackAlert/**'
+      '$(Build.SourcesDirectory)/PayStackAlert/requirements.psd1'
+    TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
 
 - task: ArchiveFiles@2
   inputs:
@@ -60,8 +55,8 @@ steps:
     archiveType: zip 
     archiveFile: '$(Build.ArtifactStagingDirectory)/slack_azure_function.zip' 
    
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   displayName: Publish Artifact
   inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: Prg.AzureMonitorToSlack
+    targetPath: $(Build.ArtifactStagingDirectory)
+    artifact: Prg.AzureMonitorToSlack
