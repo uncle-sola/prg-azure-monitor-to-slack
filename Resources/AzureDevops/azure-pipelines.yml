@@ -23,11 +23,11 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy MonitorAlert files'
   inputs:
-    Contents: Modules/** |
-      MonitorAlert/** |
-      host.json |
-      profile.ps1 |
-      requirements.psd1 |
+    Contents: Modules/** 
+      MonitorAlert/** 
+      host.json 
+      profile.ps1 
+      requirements.psd1 
       proxies.json 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
     SourceFolder: $(Build.SourcesDirectory)/MonitorAlert
@@ -43,8 +43,8 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy PayStack files'
   inputs:
-    Contents: Modules/** |
-              PayStackAlert/** |
+    Contents: Modules/** 
+              PayStackAlert/** 
               requirements.psd1 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
     SourceFolder: $(Build.SourcesDirectory)/PayStackAlert
