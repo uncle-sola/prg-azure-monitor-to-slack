@@ -24,12 +24,12 @@ steps:
   displayName: 'Copy MonitorAlert files'
   inputs:
     Contents: |
-      '$(Build.SourcesDirectory)/MonitorAlert/Modules/**' |
-      '$(Build.SourcesDirectory)/MonitorAlert/MonitorAlert/**' |
-      '$(Build.SourcesDirectory)/MonitorAlert/host.json' |
-      '$(Build.SourcesDirectory)/MonitorAlert/profile.ps1' |
-      '$(Build.SourcesDirectory)/MonitorAlert/requirements.psd1' |
-      '$(Build.SourcesDirectory)/MonitorAlert/proxies.json' 
+      $(Build.SourcesDirectory)/MonitorAlert/Modules/** |
+      $(Build.SourcesDirectory)/MonitorAlert/MonitorAlert/** |
+      $(Build.SourcesDirectory)/MonitorAlert/host.json |
+      $(Build.SourcesDirectory)/MonitorAlert/profile.ps1 |
+      $(Build.SourcesDirectory)/MonitorAlert/requirements.psd1 |
+      $(Build.SourcesDirectory)/MonitorAlert/proxies.json 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
 
     
@@ -42,10 +42,9 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy PayStack files'
   inputs:
-    Contents: |
-      '$(Build.SourcesDirectory)/PayStackAlert/Modules/**' |
-      '$(Build.SourcesDirectory)/PayStackAlert/PayStackAlert/**' |
-      '$(Build.SourcesDirectory)/PayStackAlert/requirements.psd1' |
+    Contents: $(Build.SourcesDirectory)/PayStackAlert/Modules/** |
+              $(Build.SourcesDirectory)/PayStackAlert/PayStackAlert/** |
+              $(Build.SourcesDirectory)/PayStackAlert/requirements.psd1 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
 
 - task: ArchiveFiles@2
