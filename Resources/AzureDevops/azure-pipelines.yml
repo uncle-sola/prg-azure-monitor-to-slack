@@ -23,29 +23,31 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy MonitorAlert files'
   inputs:
-    Contents: |
-      $(Build.SourcesDirectory)/MonitorAlert/Modules/** |
-      $(Build.SourcesDirectory)/MonitorAlert/MonitorAlert/** |
-      $(Build.SourcesDirectory)/MonitorAlert/host.json |
-      $(Build.SourcesDirectory)/MonitorAlert/profile.ps1 |
-      $(Build.SourcesDirectory)/MonitorAlert/requirements.psd1 |
-      $(Build.SourcesDirectory)/MonitorAlert/proxies.json 
+    Contents: Modules/** |
+      MonitorAlert/** |
+      host.json |
+      profile.ps1 |
+      requirements.psd1 |
+      proxies.json 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    SourceFolder: $(Build.SourcesDirectory)/MonitorAlert
 
     
 - task: CopyFiles@2
   displayName: 'Copy PostMessageToSlack files'
   inputs:
-    Contents: '$(Build.SourcesDirectory)/PostMessageToSlack/PostMessageToSlack/**'
+    Contents: PostMessageToSlack/**
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    SourceFolder: $(Build.SourcesDirectory)/PostMessageToSlack
 
 - task: CopyFiles@2
   displayName: 'Copy PayStack files'
   inputs:
-    Contents: $(Build.SourcesDirectory)/PayStackAlert/Modules/** |
-              $(Build.SourcesDirectory)/PayStackAlert/PayStackAlert/** |
-              $(Build.SourcesDirectory)/PayStackAlert/requirements.psd1 
+    Contents: Modules/** |
+              PayStackAlert/** |
+              requirements.psd1 
     TargetFolder: '$(Build.SourcesDirectory)/MonitorAlertZip'
+    SourceFolder: $(Build.SourcesDirectory)/PayStackAlert
 
 - task: ArchiveFiles@2
   inputs:
